@@ -1,0 +1,29 @@
+@media (max-width: 1000px) {
+	.features {
+
+		&__definitions {
+			max-width: 500px;
+			margin: auto;
+		}
+
+		&__definition,
+		&__definition-title {
+			font-size: 1rem;
+		}
+
+		&__heading {
+			font-size: 1.6rem;
+			margin-right: 0;
+			max-width: 500px;
+		}
+	
+		&__wrap {
+			flex-direction: column;
+		}
+
+		&__player {
+			margin-top: 2rem;
+		}
+
+	}
+}

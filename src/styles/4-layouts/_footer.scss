@@ -1,0 +1,37 @@
+.footer {
+	padding: 4rem 0;
+
+	&__wrap {
+		max-width: 50%;
+		margin: auto;
+
+		> *:not(:first-child) {
+			margin-top: 2rem;
+		}
+	}
+
+	&__logo {
+		font-size: 1.2rem;
+	}
+
+	&__link:hover {
+		color: $pink;
+	}
+
+	&__icon:hover path {
+		fill: $pink;
+	}
+
+	&__bottom-link {
+		margin: 0 1rem;
+
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+
+	&__copyright {
+		margin-top: 1rem;
+	}
+
+}

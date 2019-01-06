@@ -1,0 +1,62 @@
+.features {
+
+	&__wrap {
+		padding: 4rem 0;
+		border-bottom: 1px solid $separator-color;
+	}
+
+	&__left, &__right {
+		flex: 1;
+	}
+
+	&__heading {
+		font-size: calc(18px + (28 - 18) * (100vw - 320px) / (1366 - 320));
+		margin: 0 2rem 2rem 0;
+	}
+
+	&__definitions {
+		max-width: 350px;
+		margin-right: 2rem;
+	}
+
+	&__definition-title {
+		font-size: calc(10px + (16 - 10) * (100vw - 320px) / (1366 - 320));
+
+		&:not(:first-of-type) {
+			margin-top: 2rem;
+		}
+	}
+
+	&__definition {
+		margin: 0.5rem 0 0 0;
+		line-height: 1.5;
+	}
+
+	&__player {
+		max-width: 500px;
+		position: relative;
+	}
+
+	&__video {
+		max-width: 100%;
+		border-radius: $border-radius--8;
+	}
+
+	&__button-container {
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		background: $overlay-color;
+		border-radius: $border-radius--8;
+	}
+
+	&__play-button {
+		width: 70px;
+		height: 70px;
+		padding: 0;
+		border-radius: 100%;
+	}
+
+}

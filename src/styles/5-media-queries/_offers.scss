@@ -1,0 +1,17 @@
+@media (max-width: 1000px) {
+	.offers {
+	
+		&__wrap {
+			flex-direction: column;
+		}
+
+		&__info {
+			width: 70%;
+
+			&:not(:first-child) {
+				margin-top: 2rem;
+			}
+		}
+
+	}
+}

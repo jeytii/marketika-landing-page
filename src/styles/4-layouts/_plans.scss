@@ -1,0 +1,43 @@
+.plans {
+	padding: 4rem 0;
+
+	&__wrap {
+		max-width: 60%;
+		margin: auto;
+	}
+
+	&__subtitle {
+		max-width: 600px;
+		margin: 1rem auto 0 auto;
+		line-height: 1.5;
+	}
+
+	&__cards {
+		margin-top: 3rem;
+	}
+
+	&__card {
+		padding: 3rem 2rem;
+
+		&:last-child .button {
+			border: 1px solid $border-color;
+		}
+	}
+
+	&__cost {
+		margin: 2rem 0;
+	}
+
+	&__price {
+		font-size: 4rem;
+	}
+
+	&__description {
+		line-height: 2;
+	}
+
+	&__button {
+		margin-top: 2rem;
+	}
+
+}

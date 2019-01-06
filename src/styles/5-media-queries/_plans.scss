@@ -1,0 +1,13 @@
+@media (max-width: 880px) {
+	.plans__cards {
+		max-width: 400px;
+		display: block;
+		margin: 3rem auto 0 auto;
+	}
+}
+
+@media (max-width: 500px) {
+	.plans__wrap {
+		max-width: 90%;
+	}
+}

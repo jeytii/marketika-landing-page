@@ -1,0 +1,41 @@
+@media (max-width: 845px) {
+	.footer {
+
+		&__wrap {
+			max-width: 80%;
+		}
+
+		&__copyright {
+			font-size: calc(12px + (14 - 12) * (100vw - 320px) / (845 - 320));
+		}
+	
+	}
+}
+
+@media (max-width: 545px) {
+	.footer {
+
+		&__nav {
+			flex-direction: column;
+		}
+
+		&__link:not(:first-child) {
+			margin-top: 1rem;
+		}
+
+		&__misc {
+			justify-content: space-between;
+		}
+
+		&__bottom-link {
+			margin: 0;
+		}
+
+	}
+}
+
+@media (max-width: 450px) {
+	.footer__misc {
+		flex-direction: column;
+	}
+}

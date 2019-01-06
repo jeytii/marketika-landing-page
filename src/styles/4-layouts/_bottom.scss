@@ -1,0 +1,18 @@
+.bottom {
+	padding: 4rem 0;
+
+	&__wrap {
+		max-width: 50%;
+		margin: auto;
+	}
+
+	&__heading {
+		font-size: 3rem;
+	}
+
+	&__description {
+		max-width: 450px;
+		line-height: 1.5;
+		margin: 2rem auto;
+	}
+}

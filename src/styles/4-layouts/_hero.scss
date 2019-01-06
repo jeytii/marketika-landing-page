@@ -1,0 +1,44 @@
+.hero {
+	height: 100vh;
+	background: url('../images/hero-background.jpg') no-repeat 45% 45%;
+	background-size: cover;
+	position: relative;
+	z-index: 1;
+
+	&:after {
+		content: '';
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		right: 0;
+		left: 0;
+		background: $overlay-color;
+		z-index: -1;
+	}
+
+	&__title {
+		font-size: 40px;
+	}
+
+	&__subtitle {
+		width: 60%;
+		margin: 1rem auto 1.5rem auto;
+		line-height: 1.7;
+	}
+
+	&__input {
+		border: none;
+		background: $transparent-white;
+		border-radius: $border-radius--4;
+		padding: 0 10px;
+		flex: 1;
+
+		&[type='email'] {
+			margin: 0 1rem;
+		}
+
+		&::placeholder {
+			color: $white;
+		}
+	}
+}

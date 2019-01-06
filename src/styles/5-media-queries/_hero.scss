@@ -1,0 +1,29 @@
+@media (max-width: 755px) {
+	.hero {
+		padding: 0 1rem;
+		background-position: 35% 35%;
+
+		&__form {
+			max-width: 420px;
+			flex-direction: column;
+			margin: auto;
+		}
+
+		&__subtitle {
+			width: 70%;
+		}
+
+		&__input {
+			padding: 10px;
+
+			&[type='email'] {
+				margin: 1rem 0;
+			}
+		}
+
+		&__input, &__submit {
+			display: block;
+		}
+
+	}
+}

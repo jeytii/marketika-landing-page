@@ -1,0 +1,11 @@
+@media (max-width: 1000px) {
+	.bottom__heading {
+		font-size: calc(40px + (28 - 40) * (100vw - 320px) / (1366 - 320));
+	}
+}
+
+@media (max-width: 500px) {
+	.bottom__wrap {
+		max-width: 90%;
+	}
+}
