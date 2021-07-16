@@ -2,6 +2,7 @@
     "name": "marketika-landing-page",
     "version": "1.0.0",
     "description": "A responsive marketing website's landing page concept",
+    "homepage": "https://marketika-landing-page.vercel.app",
     "main": "gulpfile.babel.js",
     "scripts": {
         "start": "NODE_ENV=development gulp serve",
