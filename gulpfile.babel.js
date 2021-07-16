@@ -1,17 +1,90 @@
-import { task, series, parallel } from 'gulp'
-import env from 'gulp-environment'
-import del from 'del'
+import { task, series, src, dest } from 'gulp';
+import gulpLoadPlugins from 'gulp-load-plugins';
+import realFavicon from 'gulp-real-favicon';
+import del from 'del';
+import fs from 'fs';
 
-import * as devStreams from './config/dev-streams'
-import * as prodStreams from './config/prod-streams'
-import { source } from './config/paths'
+import * as devStreams from './config/development';
+import * as prodStreams from './config/production';
 
-const ifDev = env.if.development.bind(null)
+const $ = gulpLoadPlugins()
+const isDev = process.env.NODE_ENV === 'development';
+const faviconMarkupsJson = 'favicons.json';
 
-task('html', ifDev(devStreams.html).else(prodStreams.html))
-task('images', ifDev(devStreams.images).else(prodStreams.images))
-task('clean', del.bind(null, ['build/**', '.tmp/**']))
-task('size', prodStreams.size)
+task('html', $.if(isDev, devStreams.html, prodStreams.html));
+task('clean', del.bind(null, ['build', '.tmp', 'favicons.json']));
+task('size', prodStreams.size);
 
-task('serve', series('clean', parallel('html', 'images'), devStreams.serve))
-task('build:serve', series('clean', parallel('html', 'images'), 'size', prodStreams.serve))
+task('generate-favicon', done => {
+    realFavicon.generateFavicon({
+        masterPicture: 'src/icon.png',
+        dest: isDev ? '.tmp/favicons' : 'build/favicons',
+        iconsPath: '/favicons',
+        design: {
+            ios: {
+                pictureAspect: 'noChange',
+                assets: {
+                    ios6AndPriorIcons: false,
+                    ios7AndLaterIcons: false,
+                    precomposedIcons: false,
+                    declareOnlyDefaultIcon: true
+                }
+            },
+            desktopBrowser: {
+                design: 'raw'
+            },
+            windows: {
+                pictureAspect: 'noChange',
+                backgroundColor: '#da532c',
+                onConflict: 'override',
+                assets: {
+                    windows80Ie10Tile: false,
+                    windows10Ie11EdgeTiles: {
+                        small: false,
+                        medium: true,
+                        big: false,
+                        rectangle: false
+                    }
+                }
+            },
+            androidChrome: {
+                pictureAspect: 'noChange',
+                themeColor: '#ffffff',
+                manifest: {
+                    display: 'standalone',
+                    orientation: 'notSet',
+                    onConflict: 'override',
+                    declared: true
+                },
+                assets: {
+                    legacyIcon: false,
+                    lowResolutionIcons: false
+                }
+            },
+            safariPinnedTab: {
+                pictureAspect: 'silhouette',
+                themeColor: '#5bbad5'
+            }
+        },
+        settings: {
+            scalingAlgorithm: 'Mitchell',
+            errorOnImageTooSmall: false,
+            readmeFile: false,
+            htmlCodeFile: false,
+            usePathAsIs: false
+        },
+        markupFile: faviconMarkupsJson
+    }, () => {
+        done();
+    });
+});
+
+task('inject-favicon-markups', () => (
+    src(['build/*.html', '.tmp/*.html'])
+        .pipe(realFavicon.injectFaviconMarkups(JSON.parse(fs.readFileSync(faviconMarkupsJson)).favicon.html_code))
+        .pipe(dest('build'))
+));
+
+task('serve', series('clean', 'html', 'generate-favicon', 'inject-favicon-markups', devStreams.serve));
+task('build', series('clean', 'html', 'generate-favicon', 'inject-favicon-markups', 'size'));
+task('build:serve', series('clean', 'html', 'size', 'generate-favicon', 'inject-favicon-markups', prodStreams.serve));
