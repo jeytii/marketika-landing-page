@@ -1,5 +1,5 @@
 # marketika-landing-page
-An awesome landing page design by [Didar Ahmed](https://twitter.com/didarahmed26). Check it out [here](https://jstarnate.github.io/marketika-landing-page).
+An awesome landing page design by [Didar Ahmed](https://twitter.com/didarahmed26).
 
 ![Image](https://www.graphicslot.com/wp-content/uploads/2018/12/marketing-landing-page-full-view.jpg)
 
